@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <page-loging></page-loging>
+
+  <ion-footer>
+  	<button ion-button full class="my-button">Version:<span id="version">1.0.0</span></button>
+  	<button ion-button full (click)="goToDisclaimerAbout(false)">About me<span class="righ-side">&gt;</span></button>
+  	<button ion-button full (click)="goToDisclaimerAbout(true)">Disclaimer<span class="righ-side">&gt;</span></button>
+  </ion-footer>
+
+</ion-content>

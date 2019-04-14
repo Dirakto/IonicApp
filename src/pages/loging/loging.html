@@ -1,0 +1,119 @@
+<!-- Renders when the page is ready to display content -->
+<div *ngIf="isReady">
+	<!-- Renders if the user isn't logged yet -->
+	<div *ngIf="!isLogged">
+		<!-- Creating the form for logging/registering -->
+		<form [formGroup]="credentialsForm">
+			<!-- Setting email input -->
+			<ion-item>
+				<ion-label floating>
+					Email:
+				</ion-label>
+				<br>
+				<ion-input [formControl]="credentialsForm.controls['email']" type="email"></ion-input>
+			</ion-item>
+
+			<!-- Setting error rendering for email input validation -->
+			<div class="error" *ngIf="(!credentialsForm.controls.email.valid && (credentialsForm.controls.email.dirty || credentialsForm.controls.email.touched)) || (!isValid && (!credentialsForm.controls.email.dirty || !credentialsForm.controls.email.touched))">
+
+				<!-- For every error creates a separate message (if the error occurred) -->
+				<div *ngFor="let val of validation_msg.email">
+					<div *ngIf="credentialsForm.controls.email.hasError(val.type)">
+						*{{val.message}}
+					</div>
+				</div>
+			</div>
+
+			<!-- Setting password input -->
+			<ion-item>
+				<ion-label floating>
+					Password:
+				</ion-label>
+				<ion-input [formControl]="credentialsForm.controls['password']" type="password"></ion-input>
+			</ion-item>
+
+			<!-- Setting error rendering for password input validation -->
+			<div class="error" *ngIf="(!credentialsForm.controls.password.valid && (credentialsForm.controls.password.dirty || credentialsForm.controls.password.touched)) || (!isValid && (!credentialsForm.controls.password.dirty || !credentialsForm.controls.password.touched))">
+
+				<!-- For every error creates a separate message (if the error occurred) -->
+				<div *ngFor="let val of validation_msg.password">
+					<div *ngIf="credentialsForm.controls.password.hasError(val.type)">
+						*{{val.message}}
+					</div>
+				</div>
+			</div>
+
+			<!-- Setting Password Confirmation input -->
+			<ion-item *ngIf="isSigningIn">
+				<ion-label floating>
+					Confirm password:
+				</ion-label>
+				<ion-input [formControl]="credentialsForm.controls['password2']" type="password"></ion-input>
+			</ion-item>
+
+			<!-- For every error creates a separate message (if the error occurred). This one differs from the previous
+				 ones. I think I coud rewrite it but I don't want to make an error -->
+			<div *ngFor="let val of validation_msg.password2">
+				<div class="error" *ngIf="credentialsForm.controls.password2.hasError(val.type) && isSigningIn && ((!credentialsForm.controls.password2.valid && (credentialsForm.controls.password2.dirty || credentialsForm.controls.password2.touched)) || (!isValid && (!credentialsForm.controls.password2.dirty || !credentialsForm.controls.password2.touched)))">
+						*{{val.message}}
+				</div>
+			</div>
+
+			<!-- Additional errors for special cases (not involving inputs' validators) -->
+			<div [ngSwitch]="additionalErrors" class="error">
+				<div *ngSwitchCase="1">
+					Field doesn't match password
+				</div>
+				<div *ngSwitchCase="2">
+					Account with this email already exists
+				</div>
+				<div *ngSwitchCase="3">
+					No such account exists
+				</div>
+				<div *ngSwitchCase="4">
+					<ion-icon name="outlet"></ion-icon>
+					Something went wrong!
+				</div>
+				<div *ngSwitchCase="5">
+					Verification email was sent to your email address
+				</div>
+				<div *ngSwitchCase="6">
+					Password doesn't tally with requirements
+				</div>
+			</div>
+
+
+			<ion-row>
+				<!-- spinner appears when the application awaits server's response -->
+				<ion-spinner name="bubbles" *ngIf="isLoading"></ion-spinner>
+				<ion-col text-center>
+					<button ion-button *ngIf="!isSigningIn" (click)="logIn()">
+						Login
+					</button>
+
+					<button ion-button (click)="signIn()" *ngIf="!isSigningIn">
+						Sign in
+					</button>
+
+					<button ion-button (click)="saveAccount()" *ngIf="isSigningIn">
+						Save
+					</button>
+					<button ion-button (click)="cancelSaving()" *ngIf="isSigningIn">
+						Cancel
+					</button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</div>
+
+	<!-- If the user is already logged -->
+	<div *ngIf="isLogged" text-center>
+		<span class="loggedText">You are logged as:
+			<br>
+			<span id="email" class="loggedText">{{username}}</span>
+		</span>
+		<button ion-button round (click)="logout()">Logout</button>
+	</div>
+
+</div>
+

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+
+  	<ion-buttons left>
+        <button ion-button icon-only (click)="goToRoot()" class="backButton">
+            <ion-icon name="arrow-back"></ion-icon>
+            Back
+        </button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-toolbar class="bar-header">
+		<ion-buttons left>
+			<button ion-button menuToggle><ion-icon name="menu" left></ion-icon></button>
+		</ion-buttons>
+
+		<ion-searchbar #search right (ionInput)="onInput($event)" (ionClear)="onClear($event)" >
+		</ion-searchbar>
+	</ion-toolbar>
+
+
+	<ion-content id="fixed">
+
+		<img id="spinner" src="../../assets/imgs/spinner.gif" *ngIf="!isReadyIndex || !isReadyBook"/>
+
+		<div *ngIf="isReadyIndex && isReadyBook">
+			
+			<div *ngFor="let book of booksArray" class="book" text-wrap (click)="goToBook(book.id)">
+				<img src="{{this.dbProvider.url}}/photo?p={{book.cover}}" />
+				<div class="block-with-text">{{book.name}}</div>
+			</div>
+
+		</div>
+
+		<ion-infinite-scroll *ngIf="!turnOffScroll" (ionInfinite)="doInfinite($event)" loadingSpinner="bubbles" loadingText="Loading more data..." threshold="1%">
+   			<ion-infinite-scroll-content></ion-infinite-scroll-content>
+ 		</ion-infinite-scroll>
+	</ion-content>
+
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+      Books' App
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="no-scroll">
+
+	<ion-img src="../../assets/imgs/BooksAppLogo.png"></ion-img>
+
+	<p>
+		<button ion-button large block icon-left (click)="goToSearch()"><ion-icon name="search"></ion-icon>Search</button>
+	</p>
+	<p>
+		<button ion-button large block icon-left (click)="goToFavourite()"><ion-icon name="heart"></ion-icon>Favourite</button>
+	</p>
+	<p>
+		<button ion-button large block icon-left (click)="goToSettings()"><ion-icon name="settings"></ion-icon>Settings</button>
+	</p>
+
+	<ion-img src="../../assets/imgs/PoweredByLogo.png" width="40%" id="poweredBy"></ion-img>
+
+	<ion-footer>
+		<ion-toolbar>
+			<span>©Book's App All rights reserved</span>
+		</ion-toolbar>
+	</ion-footer>
+</ion-content>

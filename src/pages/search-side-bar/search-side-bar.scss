@@ -1,0 +1,14 @@
+page-search-side-bar {
+
+	// deletes the scroll (in ion-content)
+	.no-scroll .scroll-content{
+	     overflow: hidden;
+	}
+
+	.activeHighlight{
+		background-color: map-get($colors, primary);
+	}
+	.item{
+	  margin-bottom: -5px;
+	}
+}

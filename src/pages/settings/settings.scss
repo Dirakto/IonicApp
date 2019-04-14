@@ -1,0 +1,21 @@
+page-settings {
+
+	#version{
+		margin-left:  auto;
+		color:  #fff700;
+	}
+
+	.righ-side{
+		margin-left:  auto;
+		font-size: 1.8em;
+	}
+
+	// disables selecting text
+	.my-button{
+   		pointer-events: none;
+	}
+
+	.button-inner{
+    	justify-content: flex-start;
+	}
+}

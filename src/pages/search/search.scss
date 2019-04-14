@@ -1,0 +1,130 @@
+page-search {
+
+	// deletes the scroll (for ion-content)
+	.no-scroll .scroll-content{
+	     overflow: hidden;
+	}
+
+	ion-buttons{
+		padding-right: 10px;
+	}
+
+	ion-icon{
+		font-size:  30px;
+	}
+
+
+	.book{
+		border-bottom: 5px dotted map-get($colors, primary);
+
+		width: 44vw;
+		height: 42vh;
+		margin-left: 3%;
+		margin-right: 0;
+		float: left;
+		overflow: hidden;
+
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 5px;
+		margin-bottom: 10px;
+		z-index: 100;
+	}
+
+	// adds 'clicking' effect
+	.book:active {
+		background-color: #577bff;
+  		transform: translateY(4px);
+	}
+
+	// when clicked it deletes white rectangle created by .block-with-text:after
+	.book:active > .block-with-text:after {
+		background-color: #577bff;
+	}
+
+	//solution taken from http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ ///////////////////////
+	// it improves rendering of books' labels (multi-ine breaks)
+	.block-with-text {
+	  margin-right: -1em;
+	  font-size: 1.1em;
+	  overflow: hidden;
+	  position: relative; 
+	  line-height: 1.5em;
+	  max-height: 4.5em; 
+	  text-align: left;  
+	  margin-right: -1em;
+	  padding-right: 1em;
+	}
+	/* creates block */
+	.block-with-text:before {
+	  content: '';
+	  position: absolute;
+	  right: 0;
+	  bottom: 0;
+	}
+	/* hides bock if we have text, which is less than or equal to max lines */
+	.block-with-text:after {
+	  content: '';
+	  position: absolute;
+	  right: 0;
+	  width: 1em;
+	  height: 1em;
+	  margin-top: 0.2em;
+	  background: white;
+	}
+	// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// adds the scroll so that all the content can be reached
+	#fixed > div {
+		overflow-y: scroll !important; 
+	}
+	#fixed{
+		height: 91%;
+	}
+
+	//to delete an empty space in iOS
+	div.scroll-content {
+		padding-top: 0px !important;
+	}
+
+	// to move the spinner into the center of the screen
+	ion-infinite-scroll:not(.active) .spinner,
+	ion-infinite-scroll:not(.active) .icon:before {
+   		width: 64px;
+   		height: 64px;
+   		pointer-events:none;
+	}
+	ion-infinite-scroll{
+		position: fixed;
+		width: 0vw;
+		top: 50vh;
+		left: 40vw;
+	}
+	// sets position of additional spinner (shown when loading data)
+	#spinner {
+		position: relative;
+		top: 100px;
+	}
+
+
+	// customizes my <BACK button
+	ion-buttons button[icon-only].backButton {
+	   margin: 0 6px;
+	   min-width: 36px;
+	}
+
+	// #retry{
+	// 	text-align: center;
+	// }
+	// #retry > img {
+	// 	display:block;
+	// 	margin-right: auto;
+	// 	margin-left: auto;
+	// 	width: 60%;
+	// 	height: 60%;
+	// }
+
+	// .hidden {
+	// 	pointer-events: none;
+	// }
+}

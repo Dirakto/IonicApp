@@ -1,0 +1,37 @@
+page-loging {
+
+	// sets spinner when app awaits server's response
+	ion-spinner{
+		z-index:  10;
+		display: relative;
+		top:  15px;
+		left:  60px;
+	}
+
+	.loggedText{
+		font-size: 1.2em;
+	}
+
+	.loggedText + button {
+		margin-top: 13px;
+	}
+
+	// rendering email 'label'
+	#email {
+		font-size :  1.3em;
+		font-weight: bold;
+	}
+
+	// for rendering errors
+	.error {
+		color: red;
+		font-size: 1em;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 7px;
+		position: relative;
+		top: 10px;
+		z-index: 100;
+		width: 90%;
+	}
+}

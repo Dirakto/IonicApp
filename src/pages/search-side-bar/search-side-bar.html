@@ -1,0 +1,17 @@
+<ion-content class="no-scroll">
+
+	<ion-menu side="overlay" [content]="menubutton">
+		<ion-content>
+			
+			<ion-list *ngFor="let cat of categories">
+				
+				<button ion-item detail-push (click)="addFilter(cat)" [class.activeHighlight]="checkActive(cat)">{{cat.name}}</button>
+
+			</ion-list>
+
+		</ion-content>
+	</ion-menu>
+
+	<ion-nav #menubutton></ion-nav>
+
+</ion-content>

@@ -1,0 +1,36 @@
+page-book {
+
+	// to set cover positions
+	img{
+		float: left;
+		width: 40vw;
+	}
+
+	// for proper rendering book's title
+	#title{
+		padding-left: 10px;
+		width: 50vw;
+		float: right;
+		font-size: 1.5em;
+		letter-spacing: 1px;
+		line-height: 1.2em;
+	}
+
+	// for correct placing of labels like year and author
+	.info{
+		width: 67vw;
+		float: right;
+		text-align: left;
+	}
+
+	// for description of a book
+	.description{
+		margin-top: 5px;
+		font-size: 0.7em;
+		width: 96vw !important;
+		height: 36.5vh;
+		overflow-y: scroll;
+		white-space: pre-wrap;
+	}
+
+}

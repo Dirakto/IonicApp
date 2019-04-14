@@ -1,0 +1,87 @@
+page-favourite {
+
+	.no-scroll .scroll-content{
+	     overflow: hidden;
+	     // overflow: scroll;
+	     // overflow-y: scroll;
+	}
+	#scroll {
+		position: relative;
+		top: -16px;
+		overflow-y: scroll;
+		height: 90.3vh;
+		width: 96vw;
+	}
+
+	.book{
+		border-bottom: 5px dotted map-get($colors, primary);
+
+		width: 40vw;
+		height: 42vh;
+		margin-left: 3%;
+		margin-right: 2%;
+		float: left;
+		overflow: hidden;
+
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 5px;
+		margin-bottom: 10px;
+
+		z-index: 100;
+	}
+	.book:active {
+		background-color: #577bff;
+  		transform: translateY(4px);
+	}
+
+	// when clicked it deletes white rectangle created by .block-with-text:after
+	.book:active > .block-with-text:after {
+		background-color: #577bff;
+	}
+
+	//solution taken from http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ ///////////////////////
+	// it improves rendering of books' labels (multi-ine breaks)
+	.block-with-text {
+		margin-right: -1em;
+		font-size: 1.1em;
+	  	/* hide text if it more than N lines  */
+	  	overflow: hidden;
+	  	/* for set '...' in absolute position */
+	  	position: relative; 
+	  	/* use this value to count block height */
+	  	line-height: 1.5em;
+	 	 /* max-height = line-height (1.2) * lines max number (3) */
+	  	max-height: 4.5em; 
+		/* fix problem when last visible word doesn't adjoin right side  */
+		text-align: left;  
+		/* place for '...' */
+		margin-right: -1em;
+		padding-right: 1em;
+	}
+	/* create the ... */
+	.block-with-text:before {
+	  	/* points in the end */
+	  	content: '';
+	  	/* absolute position */
+	  	position: absolute;
+	  	/* set position to right bottom corner of block */
+	  	right: 0;
+	  	bottom: 0;
+	}
+	/* hide ... if we have text, which is less than or equal to max lines */
+	.block-with-text:after {
+	  	/* points in the end */
+	  	content: '';
+	  	/* absolute position */
+	  	position: absolute;
+	  	/* set position to right bottom corner of text */
+	  	right: 0;
+	  	/* set width and height */
+	  	width: 1em;
+	  	height: 1em;
+	  	margin-top: 0.2em;
+	  	/* bg color = bg color under block */
+	  	background: white;
+	}
+}

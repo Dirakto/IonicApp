@@ -1,0 +1,45 @@
+<!--
+  Generated template for the BookPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span *ngIf="isReady&&isFavReady">{{book.name.substring(0, 20)}}</span></ion-title>
+    <ion-buttons right>
+        <button ion-button icon-only (click)="toggleFavourites()">
+            <ion-icon name="{{heart}}"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<div *ngIf="isReady">
+		<div style="height: 35vh">
+
+			<img src="{{this.dbProvider.url}}/photo?p={{book.cover}}" />
+
+			<span id="title">{{book.name}}</span>
+
+
+		</div>
+
+		<div style="font-size: 1.5em">
+			Author: <span class="info">{{book.author}}</span>
+			<br>
+			Year: <span class="info">{{book.year.substring(0,4)}}</span>
+			<br>
+			<br>
+			Description:
+			<div class="description" [innerHtml]="book.description">
+			</div>
+		</div>
+
+	</div>
+</ion-content>

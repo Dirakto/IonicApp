@@ -1,0 +1,21 @@
+page-home {
+	#poweredBy {
+		margin-top: 20%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	p {
+		margin-top: 10%;
+	}
+
+	ion-toolbar {
+		text-align: center;
+	}
+
+	.no-scroll .scroll-content{
+	     overflow: hidden;
+	}
+
+}
